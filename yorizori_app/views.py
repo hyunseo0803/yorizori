@@ -5,6 +5,8 @@ from urllib import request
 from .models import *
 from django.contrib.auth.hashers import check_password
 
+sl=[]
+
 def index(request):
     return render(request, 'search.html')
 
@@ -90,3 +92,8 @@ def upload(request):
         recipeUpload.save()
         
         return render(request,'repository.html')
+    
+    
+def addSource(request):
+    return render(request,'addSource.html')
+    
