@@ -5,20 +5,10 @@ class Manage(models.Model):
     report = models.CharField(max_length=100, blank=True, null=True)
     c_report = models.CharField(max_length=100, blank=True, null=True)
 
-    class Meta:
-        managed = False
-        db_table = 'manage'
-
-
 class MemberInfo(models.Model):
     id = models.CharField(primary_key=True, max_length=100)
     password = models.CharField(max_length=100, blank=True, null=True)
     email = models.CharField(max_length=100, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'member_info'
-
 
 class Recipe(models.Model):
     id = models.ForeignKey(MemberInfo, models.DO_NOTHING, db_column='id')
@@ -30,17 +20,8 @@ class Recipe(models.Model):
     url = models.CharField(max_length=100, blank=True, null=True)
     c_like = models.CharField(max_length=100, blank=True, null=True)
 
-    class Meta:
-        managed = False
-        db_table = 'recipe'
-
-
 class Review(models.Model):
     id = models.ForeignKey(MemberInfo, models.DO_NOTHING, db_column='id', blank=True, null=True)
     recipe = models.ForeignKey(Recipe, models.DO_NOTHING, blank=True, null=True)
     coment = models.CharField(max_length=100, blank=True, null=True)
     num = models.CharField(primary_key=True, max_length=100)
-
-    class Meta:
-        managed = False
-        db_table = 'review'

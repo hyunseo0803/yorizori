@@ -4,48 +4,53 @@ from django.shortcuts import render,redirect
 from urllib import request
 from .models import *
 from django.contrib.auth.hashers import check_password
+from django.contrib.auth.models import User 
+from django.contrib import auth 
+from django.http import HttpResponseRedirect
+
 
 sl=[]
 
 def index(request):
-    return render(request, 'search.html')
+    return render(request, 'home.html')
 
-def login(Request,id):  #로그인 기능
-    if request.method == "GET":
-        return render(request, 'views/login.html') 
-    elif request.method == "POST":
+def login(request):  #로그인 기능
+    if request.method == "POST":
         id=request.POST.get('id')   #사용자 입력 아이디=id
         password=request.POST.get('password')   #사용자 입력 패스워드=password  
-        
         res_data={}   #유효성 처리 
         memberinfo=MemberInfo.objects.get(id=id) #MemberInfo 테이블의 id와 사용자 아이디 입력 id 일치하는 것 가져오기
         if check_password(password, memberinfo.password): #패스워드 확인 
             request.session['id']=memberinfo.id    #세션 유지 처리 
             
-            return  redirect('/')   #index 로 리다이렉트
+            user={id:memberinfo.id}
+            return  render(request, 'home.html', user)  #index 로 리다이렉트
         else:
             res_data['error']="비밀번호가 틀립니다." #에러 처리 
+            
+    return render(request,'login.html')
+
+def success(request):
+    return render(request,'success.html')
         
 def logout(request):
     logout(request)
     return render(request, 'index2.html')
 
-def singup(request):
+def singUp(request):
     if request.method == 'POST':
         id=request.POST.get('id')   #사용자 입력
         password=request.POST.get('password')  
         email=request.POST.get('email')
         
-        try:
-            memberInfo=MemberInfo.objects.get(id,password,email)
-            memberInfo.save()
-        except IntegrityError:
-            return render(
-                request,'singup.html',{"massage":"Id already taken."}
-                
-            )
-        login(request,memberInfo)
-        return render(request,'login.html')
+        memberinfo=MemberInfo(
+            id=id,
+            password=password,
+            email=email,
+        )
+        memberinfo.save()
+        return HttpResponseRedirect('/home/')
+    return render(request, 'singUp.html')
             
 def Mupdate(request):  #회원정보 수정
     if request.method == 'GET':
@@ -96,4 +101,17 @@ def upload(request):
     
 def addSource(request):
     return render(request,'addSource.html')
+
+def search(request):
+    return render(request,'search.html')
+
+
+# def login(request):
+#     return render(request,'login.html')
+
+
+# def register(request):
+#     return render(request,'register.html')
+
+    
     
