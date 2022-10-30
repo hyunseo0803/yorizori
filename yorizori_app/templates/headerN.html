@@ -13,6 +13,8 @@
 </head>
 
 <body>
+<form method="POST" action="">
+  {% csrf_token %}
   <div class="header" role="banner">
     <img class="main-logo" src="{% static 'images/logo.png' %}"/>
   </div>
@@ -32,6 +34,7 @@
             <a class="nav-link" href='../singUp/'>Sing up</a>
           </li>
         </ul>
+      </from>
         <form class="d-flex">
           <a href='../addSource/' class="btn btn-light">search</a>
         </form>
