@@ -1,0 +1,29 @@
+{% load static %}
+{% include "LoginheaderN.html"%}
+{% comment %} https://rednooby.tistory.com/86 참고-db에서 테이블로 데이터 보여주기 {% endcomment %}
+<link rel="stylesheet" href="{% static 'css/addSource.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&display=swap" rel="stylesheet">    
+    <meta
+    name="viewport" content="width=device-width, initial-scale=1">
+    <linkrel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script></head>
+    <body><div class="container"><table class="table table-striped">
+        <thead>
+        <tr>
+        <td><B>제목</B></td>
+        <td><B>소개</B></td>
+        <td><B>좋아요수</B></td>
+    </tr>
+    </thead>
+        <tbody>
+        {%for recipe in recipe%}
+        <tr>
+        <td>{{recipe.title}}</td>
+        <td>{{recipe.info}}</td>
+        <td>{{recipe.c_like}}</td>
+    </tr>
+        {%endfor%}
+        <tbody></table></body>
