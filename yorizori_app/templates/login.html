@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 {% load static %}
-{% include "LoginheaderN.html"%}
+{% include "headerN.html"%}
 <link rel="stylesheet" href="{% static 'css/logIn.css' %}"/>
-
 
 <div class="content">  
   <div class="welcom">
     <h1>Welcome to Yorijori. Please log in with your account.</h1>
     </div>
   <div class="inputf">
-  <form class="row g-3" method="POST" action="../">
+  <form class="row g-3" method="POST" action="">
     {% csrf_token %}
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">ID</label>
-      <input type="id" class="form-control" id="inputEmail4" >
+      <input type="id" class="form-control" name="id" >
     </div>
     <div class="col-md-6">
       <label for="inputAddress" class="form-label">Password</label>
-      <input type="password" class="form-control" id="inputPassword" placeholder="비밀번호 입력" >
+      <input type="password" class="form-control" name="password" placeholder="비밀번호 입력" >
     </div>
+    {{error}}
+
+{%if user_is %}
+{{user_is.id}}
+{%endif%}
+  
     <div class="col-12">
       <button type="submit" class="btn btn-primary" href='home'>Sign in</button>
       <p style="float:right; padding: 5px">  sign up.  </p>  <p style="float:right; padding: 5px">  If you don't have an account, </p>
       <!-- {% comment %} <button type="submit" class="btn btn-primary" src = "{% static 'templates/search.html' %}">Toggle link</button> {% endcomment %} -->
         </div>
+
   </form>
+
 </div>
