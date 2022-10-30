@@ -1,0 +1,57 @@
+{% load static %}
+{% include "LoginheaderN.html"%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/upload.css' %}">
+
+    <h2>Responsive Form</h2>
+<p>Resize the browser window to see the effect. When the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other.</p>
+
+<div class="container">
+  <form action="../MyRecipe/" method="post">
+    {% csrf_token %}
+  <div class="col">
+  <div class="row">
+    <div class="col-25">
+      <label for="fname">title</label>
+    </div>
+    <div class="col-75">
+      <input type="title" name="title" placeholder="Your title..">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="lname">information</label>
+    </div>
+    <div class="col-75">
+      <input type="info" name="info" placeholder="Recipe information..">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="country">재료</label>
+    </div>
+    <div class="col-75">
+    <input type="source" name="source" placeholder="Recipe source..">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="subject">ex</label>
+    </div>
+    <div class="col-75">
+      <textarea name="ex" placeholder="ex.." style="height:200px"></textarea>
+    </div>
+  </div>
+  <br>
+  <div class="mb-3">
+    <input class="form-control form-control-sm" id="formFileSm" type="file">
+  </div>
+  <div class="row">
+    <input type="submit" value="Submit">
+  </div>
+  </form>
+</div>
+</div>
+
+</body>
+
+</form>
