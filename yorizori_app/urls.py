@@ -8,7 +8,8 @@ urlpatterns = [
     path('singUp/', views.singUp),
     path('search/', views.search),
     path('home2/', views.home2),
-    # path('success/', views.success),
+    path('upload/', views.upload),
+    path('MyRecipe/', views.MyRecipe),
 ]
 
 
