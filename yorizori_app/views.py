@@ -9,6 +9,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate,login,logout
 
 memberinfo=MemberInfo()
+upload=Recipe()
 sl=[]
 res_data={}
 
@@ -81,18 +82,29 @@ def Mupdate(request):  #회원정보 수정
             return redirect('/', MemberInfo.id)
         
 def upload(request):
-    if request.method == "GET":
-        return render(request, 'views/index2.html') 
-    elif request.method == "POST":
+    if request.method == "POST":
+        memberinfo=MemberInfo()
+        n_id = MemberInfo.objects.get(id=request.session['id'])
+        request.session['id'] = memberinfo.id
         title=request.POST.get('title')   #사용자 입력
         info=request.POST.get('info')   
         source=request.POST.get('source')
         ex=request.POST.get('ex')
         
-        recipeUpload=Recipe.objects.get(title,info,source,ex) #Recipe 테이블
-        recipeUpload.save()
-        
-        return render(request,'repository.html')
+        upload=Recipe() #Recipe 테이블
+        upload.id=n_id
+        upload.title=title
+        upload.info=info
+        upload.source=source
+        upload.ex=ex
+        upload.save()
+    return render(request,'upload.html')
+
+def MyRecipe(request):
+    recipe = Recipe.objects.filter(id=request.session['id']).values()
+    context={'recipe': recipe}
+    
+    return render(request,'MyRecipe.html', context)
     
     
 def addSource(request):
