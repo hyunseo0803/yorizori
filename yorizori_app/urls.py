@@ -8,7 +8,9 @@ urlpatterns = [
     path('singUp/', views.singUp),
     path('search/', views.search),
     path('home2/', views.home2),
-    path('upload/', views.upload),
+    path('upload/', views.Upload),
+    path('edit/<int:recipe_id>/',views.Edit, name='edit'),
+    path('delete/<int:recipe_id>/', views.Delete, name='delete'),
     path('MyRecipe/', views.MyRecipe),
 ]
 

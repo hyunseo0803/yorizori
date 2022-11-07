@@ -1,3 +1,4 @@
+
 // Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByClassName("sourceList");
 var i;
@@ -28,9 +29,12 @@ if (ev.target.calssName === 'sourceList') {
 }, false);
 
 // Create a new list item when clicking on the "Add" button
+var s=[];
 function newElement() {
     var li = document.createElement("li");
     var inputValue = document.getElementById("myInput").value;
+    s.push(inputValue)
+    console.log(s)
     var t = document.createTextNode(inputValue);
     li.appendChild(t);
     if (inputValue === '') {
@@ -39,6 +43,7 @@ function newElement() {
     document.getElementById("myUL").appendChild(li);
     }
     document.getElementById("myInput").value = "";
+
 
     var span = document.createElement("SPAN");
     var txt = document.createTextNode("\u00D7");
@@ -53,4 +58,10 @@ function newElement() {
         div.style.display = "none";
     }
     }
+}
+
+function seach(){
+    axios.post("http://127.0.0.1:8000/", {
+        s:s
+        })
 }

@@ -7,7 +7,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&display=swap" rel="stylesheet">    
 <body>
-<div class="main-container">
+{% comment %} <form name="location" action="/addSource/" method="GET"> {% endcomment %}
+    <div class="main-container">
     <div class="container" id="adds">
         <div class="inputWrap">
             <h2 id="mysource" style="font-family: 'Gaegu', cursive;">당신의 재료를 입력해 주세요 ! </h2>
@@ -21,11 +22,12 @@
     </div>
 
 </div>
-    <form method="post" >
         <div class="d-grid gap-2 col-6 mx-auto">
-            <a class="btn btn-secondary" type="button" href="../search/">search</a>
+            <button class="btn btn-secondary" type="button" onclick="search()">search</button>
         </div>
-    </form>
 </div>
+
+
+{% comment %} </form> {% endcomment %}
 <script src="{% static 'js/addList.js' %}"></script>
 </body>
