@@ -62,7 +62,8 @@ ROOT_URLCONF = 'yorizori.urls'
 # AUTH_USER_MODEL = 'yorizori_app.MemberInfo'
 # AUTH_USER_MODEL = 'yorizori_app.MemberInfo'
 STATIC_URL = '/static/'
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'yorizori_app/static/media/')
+MEDIA_URL = '/yorizori_app/static/media/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'yorizori_app/static/')]
 
