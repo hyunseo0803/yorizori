@@ -17,8 +17,8 @@ class Recipe(models.Model):
     title = models.CharField(max_length=100, blank=True, null=True)
     info = models.CharField(max_length=100, blank=True, null=True)
     ex = models.CharField(max_length=100, blank=True, null=True)
-    url = models.CharField(max_length=100, blank=True, null=True)
     c_like = models.CharField(max_length=100, blank=True, null=True)
+    img_url = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
         managed = False
