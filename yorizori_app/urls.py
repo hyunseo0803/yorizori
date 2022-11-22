@@ -14,7 +14,6 @@ urlpatterns = [
     path('edit/<int:recipe_id>/',views.Edit, name='edit'),
     path('delete/<int:recipe_id>/', views.Delete, name='delete'),
     path('MyRecipe/', views.MyRecipe),
-    path('contents/<int:recipe_id>/', views.contents),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
