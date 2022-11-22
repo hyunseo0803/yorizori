@@ -1,0 +1,46 @@
+{% load static %}
+{% include "headerN.html"%}
+{% comment %} https://rednooby.tistory.com/86 참고-db에서 테이블로 데이터 보여주기 {% endcomment %}
+<link rel="stylesheet" href="{% static 'css/addSource.css' %}">
+<link rel="stylesheet" href="{% static 'css/content.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&display=swap" rel="stylesheet">    
+    <meta
+    name="viewport" content="width=device-width, initial-scale=1">
+    <linkrel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script></head>
+    <body>
+
+        {% csrf_token %}
+            <div class="container-fluid">  
+                <button type="button" class="btn btnEvent">
+                    <img src="https://img.icons8.com/cotton/64/null/like--v2.png" class="btnImages">
+                    </button>
+                {%for content in content%}
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="text-center">
+                            {{content.title}}
+                        </h1>
+                        <img class="mx-auto d-block" src="{%get_static_prefix%}media/{{content.img_url}}" >
+                        <h2 class="text-center">
+                            {{content.info}}
+                        </h2>
+                        <p class="text-center">
+                            <img src="https://img.icons8.com/doodle/48/null/ingredients.png"/>
+                            {{content.source}}
+                        </p>
+                        <div class="jumbotron card card-block">
+                            <p class="ex">
+                                {{content.ex}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+    
+    </body>
+            
