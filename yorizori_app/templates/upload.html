@@ -6,7 +6,7 @@
 <p>Resize the browser window to see the effect. When the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other.</p>
 
 <div class="container">
-  <form action="/upload/" method="post">
+  <form action="/upload/" method="post" enctype="multipart/form-data">
     {% csrf_token %}
   <div class="col">
   <div class="row">
@@ -43,7 +43,7 @@
   </div>
   <br>
   <div class="mb-3">
-    <input class="form-control form-control-sm" id="formFileSm" type="file">
+    <input class="form-control form-control-sm" name="image" type="file">
   </div>
   <div class="row">
     <input type="submit" value="Submit">
