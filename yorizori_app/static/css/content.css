@@ -1,0 +1,32 @@
+img.mx-auto{
+    width:60%;
+    height: 500px;
+    object-fit: cover;
+    margin-top: 30px;
+}
+
+.text-center{
+    margin: 30px;
+}
+.jumbotron{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    margin: 30px auto;
+}
+
+.ex{
+    margin: 30px;
+}
+
+.btn {
+    position: sticky;
+    top: 100px;
+    right: 300px;
+    float: right;
+}
+
+.heart:active{
+    background-image:"https://img.icons8.com/cotton/64/null/like--v3.png";
+    
+}
