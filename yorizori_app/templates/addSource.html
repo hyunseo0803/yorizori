@@ -6,8 +6,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&display=swap" rel="stylesheet">    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>   
 <body>
-{% comment %} <form name="location" action="/addSource/" method="GET"> {% endcomment %}
+{% comment %} <form name="location" action="/addSource/" method="post"> {% endcomment %}
+    {% comment %} {% csrf_token %} {% endcomment %}
     <div class="main-container">
     <div class="container" id="adds">
         <div class="inputWrap">
@@ -17,6 +19,7 @@
                 <button onclick="newElement()" class="btn btn-secondary">Add</button>    
             </div>
         </div>
+    {% comment %} </form> {% endcomment %}
         <ul id="myUL" class="">
         </ul>
     </div>
