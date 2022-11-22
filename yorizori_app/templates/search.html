@@ -2,100 +2,55 @@
 {% include "headerN.html"%}
 
 <link rel="stylesheet" href="{% static 'css/search.css' %}">
+<link rel="stylesheet" href="{% static 'css/addSource.css' %}">
+<body>
+  {% csrf_token %}
 <div class="container">
+  {%for c in c%}
   <div class="Ycontainer">
-    <div class="row row-cols-4">
-      <div class="col-md-3 gy-4">
+    <div class="row">
+      <div class="col">
         <div class="card">
-          <img src=" https://i.pinimg.com/736x/87/5d/4f/875d4fb7bf4d86adade54534c058f675.jpg" class="card-img-top"
-            alt="...">
+          <img class="card-img-top" src="{%get_static_prefix%}media/{{c.img_url}}" >
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title">{{c.title}}</h5>
+            <p class="card-text">{{c.info}}</p>
+            <button onclick="location.href='/contents/{{c.recipe_id}}/'" class="btn btn-primary">Go somewhere</button>
           </div>
-        </div>
-      </div>
-      <div class="col-md-3 gy-4">
-        <div class="card">
-          <img src=" https://i.pinimg.com/originals/48/7f/26/487f26aeb9a092f49751d9099f0fbd23.jpg" class="card-img-top"
-            alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 gy-4">
-        <div class="card">
-          <img src=" https://i.pinimg.com/originals/c1/ca/80/c1ca80c75dfcdca73c7e82490851181e.jpg" class="card-img-top"
-            alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 gy-4">
-        <div class="card">
-          <img src=" https://i.pinimg.com/736x/87/5d/4f/875d4fb7bf4d86adade54534c058f675.jpg" class="card-img-top"
-            alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
+        </div> 
       </div>
     </div>
   </div>
-  <div class="Ncontainer">
-    <div class="row row-cols-4">
-      <div class="col-md-3 gy-4">
-        <div class="card text-bg-dark">
-          <img src="https://i.pinimg.com/736x/05/0d/c0/050dc0cc9fa979397ef4a840d9c04ebf.jpg"
-            class="card-img-top" alt="...">
-          <div class="card-img-overlay">
-            <h5 class="card-title">Card title</h5>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 gy-4">
-        <div class="card text-bg-dark">
-          <img src="https://i.pinimg.com/736x/05/0d/c0/050dc0cc9fa979397ef4a840d9c04ebf.jpg"
-            class="card-img-top" alt="...">
-          <div class="card-img-overlay">
-            <h5 class="card-title">Card title</h5>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 gy-4">
-        <div class="card text-bg-dark">
-          <img src="https://i.pinimg.com/736x/05/0d/c0/050dc0cc9fa979397ef4a840d9c04ebf.jpg"
-            class="card-img-top" alt="...">
-          <div class="card-img-overlay">
-            <h5 class="card-title">Card title</h5>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 gy-4">
-        <div class="card text-bg-dark">
-          <img src="https://i.pinimg.com/736x/05/0d/c0/050dc0cc9fa979397ef4a840d9c04ebf.jpg"
-            class="card-img-top" alt="...">
-          <div class="card-img-overlay">
-            <h5 class="card-title">Card title</h5>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  {%endfor%}
 </div>
+<br>
+<h1 style="text-align: center; color:bisque; -webkit-text-stroke: 0.7px black;">NAVER 검색결과</h1>
+<p></p>
+<div class="container">
+  <table class="table table-hover custom-table">
+  <thead >
+  <tr style="background-color:bisque; text-align:center;">
+  <td></td>
+  <td><B>제목</B></td>
+  <td><B>소개</B></td>
+  <td><B>View</B></td> 
+
+</tr>
+</thead>
+{% csrf_token %}
+<tbody>
+  {%for recipe_c in recipe_c%}
+  <tr>
+    <td><img src={{recipe_c.3}} width="100px;" height="50px"></td>
+    <td style="width:25%;">{{recipe_c.0}}</td>
+    <td style="width:50%; background-color:rgba(253, 243, 233, 0.5)">{{recipe_c.1}}</td>
+    <td style="width:100%; display:flex;">
+      <a href={{recipe_c.2}} class="btn rounded-pill" style="background-color:bisque; margin: 30px auto; font-weight:bold;">View
+      </a>
+    </td>
+  </tr>
+  {%endfor%}
+    <tbody></table>
 </div>
 </body>
 
