@@ -15,10 +15,9 @@ class Recipe(models.Model):
     source = models.CharField(max_length=100, blank=True, null=True)
     recipe_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100, blank=True, null=True)
-    info = models.CharField(max_length=100, blank=True, null=True)
-    ex = models.CharField(max_length=100, blank=True, null=True)
-    c_like = models.CharField(max_length=100, blank=True, null=True)
-    img_url = models.CharField(max_length=100, blank=True, null=True)
+    info = models.TextField(max_length=255, blank=True, null=True)
+    ex = models.TextField(max_length=255, blank=True, null=True)
+    img_url = models.ImageField(upload_to="",blank=True, null=True)
 
     class Meta:
         managed = False

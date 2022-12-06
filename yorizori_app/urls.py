@@ -7,6 +7,7 @@ urlpatterns = [
     path('',views.index,name='index'),
     path('addSource/', views.addSource),
     path('login/', views.login),
+    path('logout/', views.logout),
     path('singUp/', views.singUp),
     path('search/', views.search, name='search'),
     path('home2/', views.home2),
@@ -14,6 +15,8 @@ urlpatterns = [
     path('edit/<int:recipe_id>/',views.Edit, name='edit'),
     path('delete/<int:recipe_id>/', views.Delete, name='delete'),
     path('MyRecipe/', views.MyRecipe),
+    path('editmember/<str:id>/', views.editmember, name='editmember'),
+    path('contents/<int:recipe_id>/', views.contents, name='contents'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
