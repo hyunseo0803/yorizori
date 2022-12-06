@@ -17,7 +17,7 @@
         <tr>
         <td><B>제목</B></td>
         <td><B>소개</B></td>
-        <td><B>좋아요수</B></td>
+        <td><B>수정</B></td>
         <td><B>삭제</B></td>
     </tr>
     </thead>
@@ -26,7 +26,6 @@
         <tr>
         <td>{{recipe.title}}</td>
         <td>{{recipe.info}}</td>
-        <td>{{recipe.c_like}}</td>
         <td><button class="btn btn-secondary rounded-pill" onclick="location.href='/edit/{{recipe.recipe_id}}/'">수정</button></td>
         <td><button class="btn btn-danger rounded-pill" onclick="location.href='/delete/{{recipe.recipe_id}}/'">삭제</button></td>
     </tr>
