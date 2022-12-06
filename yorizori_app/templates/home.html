@@ -2,65 +2,35 @@
 {% include "headerN.html"%}
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/addSource.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
+
 {% csrf_token %}
 <div class="banner">
-  <img class="background" src="https://pixabay.com/get/gf98d1b01260930dcd009c3d2edc7045a471174c986ea06367cd73ba9ad5418e36c975156b847b7c133bc26c0be4b7c757d98a00360470c60cd4fe94e35d2e3fcf27fc7612b6c14336cbded4027339490_1920.jpg">
+  <img class="background" src="{%static 'images/main.jpg'%}">
   <h1>YORIZORI</h1>
   <h2> : cook to your heart's content with your own ingredients!</h2>
 </div>
 <div class="container">
-  <div class="Ycontainer">
-    <h3>BEST</h3>
-    <div class="row row-cols-4">
-      <div class="col-md-3 gy-4">
-        <div class="card">
-          <img src=" https://i.pinimg.com/736x/87/5d/4f/875d4fb7bf4d86adade54534c058f675.jpg" class="card-img-top"
-            alt="https://tse3.mm.bing.net/th?id=OIP.emlvSiSxrV_3Mq3oVJQACAHaE9&pid=Api&P=0">
+  {%for recipe in recipe%}
+  <div class="Ycontainer" >
+    <div class="row">
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="{%get_static_prefix%}media/{{recipe.img_url}}" >
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 style="font-family: 'Hi Melody', cursive;" class="card-title">{{recipe.title}}</h5>
+            <p style="font-family: 'Hi Melody', cursive;" class="card-text">{{recipe.info}}</p>
+            <button onclick="location.href='/contents/{{recipe.recipe_id}}/'" class="btn btn-primary">Let's see <img src="https://img.icons8.com/ios-glyphs/30/null/more-than.png" style="width:20px;"/>
+            </button>
           </div>
-        </div>
-      </div>
-      <div class="col-md-3 gy-4">
-        <div class="card">
-          <img src=" https://i.pinimg.com/originals/48/7f/26/487f26aeb9a092f49751d9099f0fbd23.jpg" class="card-img-top"
-            alt="https://tse3.mm.bing.net/th?id=OIP.emlvSiSxrV_3Mq3oVJQACAHaE9&pid=Api&P=0">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 gy-4">
-        <div class="card">
-          <img src=" https://i.pinimg.com/originals/c1/ca/80/c1ca80c75dfcdca73c7e82490851181e.jpg" class="card-img-top"
-            alt="https://tse3.mm.bing.net/th?id=OIP.emlvSiSxrV_3Mq3oVJQACAHaE9&pid=Api&P=0">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 gy-4">
-        <div class="card">
-          <img src=" https://i.pinimg.com/736x/87/5d/4f/875d4fb7bf4d86adade54534c058f675.jpg" class="card-img-top"
-            alt="https://tse3.mm.bing.net/th?id=OIP.emlvSiSxrV_3Mq3oVJQACAHaE9&pid=Api&P=0">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
+        </div> 
       </div>
     </div>
   </div>
-  <!-- {{user}} -->
+  {%endfor%}
   </div>
+</body>
+</html>
