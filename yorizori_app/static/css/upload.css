@@ -44,6 +44,7 @@ h2,p{
     float: left;
     width: 25%;
     margin-top: 6px;
+    padding-left: 50px;
   }
   
   .col-75 {
@@ -64,5 +65,23 @@ h2,p{
     .col-25, .col-75, input[type=submit] {
       width: 100%;
       margin-top: 0;
+      
     }
+  }
+
+  .upload-container{
+    padding-top: 30px;
+  }
+
+  .uploadtitle{
+    background-color: rgb(235, 191, 129);
+    margin: auto;
+    width: 80%;
+    height: 85px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding: 20px;
+    color:white;
+    font-weight: bolder;
   }

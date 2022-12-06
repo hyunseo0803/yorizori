@@ -1,9 +1,11 @@
 {% load static %}
 {% include "LoginheaderN.html"%}
 <link rel="stylesheet" type="text/css" href="{% static 'css/upload.css' %}">
-
-    <h2>Responsive Form</h2>
-<p>Resize the browser window to see the effect. When the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other.</p>
+<div class="upload-container">
+    <h2 class="uploadtitle">This is the recipe upload page...</h2>
+<p style="padding:10px;"><img src="https://img.icons8.com/ios/50/FAB005/alarm.png" style="padding-right:20px;"/>한눈에 이해하기 쉽게, 당신만의 레시피를 필요한 내용만 간략히 설명해주세요! 욕설이나 부적절한 내용은 삼가하세요. <br> 
+  To make it easy to understand at a glance, please briefly describe your own recipe with only the necessary information! No profanity or inappropriate content.
+</p>
 
 <div class="container">
   <form action="/upload/" method="post" enctype="multipart/form-data">
@@ -11,34 +13,34 @@
   <div class="col">
   <div class="row">
     <div class="col-25">
-      <label for="fname">title</label>
+      <label for="fname">Title</label>
     </div>
     <div class="col-75">
-      <input type="title" name="title" placeholder="Your title..">
+      <input style="width:400px;" type="title" name="title" placeholder="당신의 요리의 이름은?!">
     </div>
   </div>
   <div class="row">
     <div class="col-25">
-      <label for="lname">information</label>
+      <label for="lname">Information</label>
     </div>
     <div class="col-75">
-      <input type="info" name="info" placeholder="Recipe information..">
+      <input style="width:400px;" type="info" name="info" placeholder="당신의 요리를 간략히 소개해주세요!">
     </div>
   </div>
   <div class="row">
     <div class="col-25">
-      <label for="country">재료</label>
+      <label for="country">Source</label>
     </div>
     <div class="col-75">
-    <input type="source" name="source" placeholder="Recipe source..">
+    <input style="width:400px;" type="source" name="source" placeholder="주재료는 무엇인가요?? ex) 주재료1, 주재료2">
     </div>
   </div>
   <div class="row">
     <div class="col-25">
-      <label for="subject">ex</label>
+      <label for="subject">Recipe</label>
     </div>
-    <div class="col-75">
-      <textarea name="ex" placeholder="ex.." style="height:200px"></textarea>
+    <div class="col-75" style="overflow:auto">
+      <textarea name="ex" placeholder="상단엔 모든 재료, &#10; &#10;하단엔 당신의 레시피를 펼쳐주세요 &#10; ex) 1... 2... " style="height:300px"></textarea>
     </div>
   </div>
   <br>
@@ -52,4 +54,3 @@
 </div>
 </div>
 
-</body>
