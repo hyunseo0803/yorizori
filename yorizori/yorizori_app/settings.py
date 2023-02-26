@@ -57,7 +57,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-ROOT_URLCONF = 'yorizori.urls'
+ROOT_URLCONF = 'yorizori_app.urls'
 
 # AUTH_USER_MODEL = 'yorizori_app.MemberInfo'
 # AUTH_USER_MODEL = 'yorizori_app.MemberInfo'
@@ -105,7 +105,7 @@ DATABASES = {
     }
 }
 
-WSGI_APPLICATION = 'yorizori.wsgi.application'
+WSGI_APPLICATION = 'yorizori_app.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -191,20 +191,22 @@ LOGGING = {
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
         },
-        'file': {
-            'level': 'INFO',
-            'encoding': 'utf-8',
-            'filters': ['require_debug_false'],
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': BASE_DIR / 'logs/mysite.log',
-            'maxBytes': 1024*1024*5,  # 5 MB
-            'backupCount': 5,
-            'formatter': 'standard',
-        },
+
+        # 'file': {
+        #     'level': 'INFO',
+        #     'encoding': 'utf-8',
+        #     'filters': ['require_debug_false'],
+        #     'class': 'logging.handlers.RotatingFileHandler',
+        #     'filename': BASE_DIR / 'logs/mysite.log',
+        #     'maxBytes': 1024*1024*5,  # 5 MB
+        #     'backupCount': 5,
+        #     'formatter': 'standard',
+        # },
+        
     },
     'loggers': {
         'django': {
-            'handlers': ['console', 'mail_admins', 'file'],
+            'handlers': ['console', 'mail_admins'],
             'level': 'INFO',
         },
         'django.server': {
@@ -212,9 +214,6 @@ LOGGING = {
             'level': 'INFO',
             'propagate': False,
         },
-        'my': {
-            'handlers': ['console', 'file'],
-            'level': 'INFO',
-        },
+    
     }
 }

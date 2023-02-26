@@ -1,0 +1,1 @@
+실행 명령어 python manage.py runserver
