@@ -8,7 +8,7 @@
     <h1>Welcome to Yorijori. Please log in with your account.</h1>
     </div>
   <div class="inputf">
-  <form class="row g-3" method="POST" action="">
+  <form class="row g-3" method="POST">
     {% csrf_token %}
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">ID</label>
@@ -25,7 +25,7 @@
 {%endif%}
   
     <div class="col-12">
-      <button type="submit" class="btn btn-primary" href='home'>Sign in</button>
+      <button type="submit" class="btn btn-primary" onclick="location.href='/home2/'">Sign in</button>
       <a style="float:right; padding: 5px" href="../singUp/">  sign up.  </a>  <p style="float:right; padding: 5px">  If you don't have an account, </p>
       <!-- {% comment %} <button type="submit" class="btn btn-primary" src = "{% static 'templates/search.html' %}">Toggle link</button> {% endcomment %} -->
         </div>

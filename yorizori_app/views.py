@@ -28,14 +28,14 @@ def login(request):  # 로그인 기능
             memberinfo = MemberInfo.objects.get(id=u_id)
             if memberinfo.password == u_password:
                 request.session['id'] = memberinfo.id
-                return render(request, 'home2.html', context={'user_is': memberinfo})
+                return render(request, 'home2.html', {'user_is': memberinfo})
         else:
             res_data['error'] = '아이디 또는 비밀번호가 일치하지 않습니다.'
     return render(request, 'login.html', res_data)
 
 
 def logout(request):
-    # session.pop()
+    request.session.flush()
     return render(request, 'home.html')
 
 
@@ -112,8 +112,8 @@ def Edit(request, recipe_id):
         recipe.save()
         return redirect('/MyRecipe/', {'recipe': recipe})
     else:
-        recipe = Recipe()
-        return render(request, 'update.html', {'recipe': recipe})
+        recipe_a = Recipe.objects.get(recipe_id=recipe_id)
+        return render(request, 'update.html', {'recipe': recipe_a})
 
 
 def Delete(request, recipe_id):
@@ -226,4 +226,6 @@ def contents(request, recipe_id):
 
 
 def home2(request):
-    return render(request, 'home2.html')
+    recipe= Recipe.objects.all().values()
+    request.session['id'] = memberinfo.id
+    return render(request, 'home2.html', {"recipe": recipe})

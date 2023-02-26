@@ -17,12 +17,12 @@
 <form method="post" action="">
   {% csrf_token %}
   <div class="header" role="banner">
-    <a href="../home2/" ><img class="main-logo" src="{% static 'images/logo.png' %}"/></a>
+    <img class="main-logo" src="{% static 'images/logo.png' %}"/>
   </div>
   </div>
   <ul class="nav justify-content-center">
     <li class="nav-item">
-    {%if user_is %}
+    {%if user_is%}
       <a class="nav-link" aria-current="page" > {{user_is.id}}님 환영합니다.</a>
     </li>
       <li class="nav-item">

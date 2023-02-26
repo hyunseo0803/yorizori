@@ -2,6 +2,10 @@
 {% include "LoginheaderN.html"%}
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/addSource.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
 {% csrf_token %}
 <div class="banner">
   <img class="background" src="{%static 'images/main.jpg'%}">
@@ -9,16 +13,19 @@
   <h2> : cook to your heart's content with your own ingredients!</h2>
 </div>
 <div class="container">
-  {%for c in c%}
+  {%for recipe in recipe%}
   <div class="Ycontainer">
     <div class="row">
       <div class="col">
-        <div class="card">
-          <img class="card-img-top" src="{%get_static_prefix%}media/{{c.img_url}}" >
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="{%get_static_prefix%}media/{{recipe.img_url}}" >
           <div class="card-body">
-            <h5 class="card-title">{{c.title}}</h5>
-            <p class="card-text">{{c.info}}</p>
-            <button onclick="location.href='/contents/{{c.recipe_id}}/'" class="btn btn-primary">Go somewhere</button>
+            <h5 style="font-family: 'Hi Melody', cursive;" class="card-title">{{recipe.title}}</h5>
+            <p style="font-family: 'Hi Melody', cursive;" class="card-text">{{recipe.info}}</p>
+            <button id="btnPostDetail" onclick="location.href='/contents/{{recipe.recipe_id}}/'" class="btn"
+            style="float: right;"
+          >Let's see <img src="https://img.icons8.com/ios-glyphs/30/null/more-than.png" style="width:20px;"/>
+          </button>
           </div>
         </div> 
       </div>

@@ -2,6 +2,7 @@
 {% include "LoginheaderN.html"%}
 {% comment %} https://rednooby.tistory.com/86 참고-db에서 테이블로 데이터 보여주기 {% endcomment %}
 <link rel="stylesheet" href="{% static 'css/addSource.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/upload.css' %}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&display=swap" rel="stylesheet">    
@@ -11,7 +12,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script></head>
     <body>
-        <div class="container">
+        <div class="myrecipe-container">
+        <h2 class="myrecipetitle">Your own cooking warehouse!</h2>
+        <p style="padding:10px;"><img src="https://img.icons8.com/ios/50/FAB005/alarm.png" style="padding-right:20px;"/>나만의 레시피를 저장하고 보관하는 요리조리입니다. <br>
+            This is cooking cooking to save and store your own recipes.
+        </p>
+        <div class="container_my">
         <table class="table table-striped">
         <thead>
         <tr>
@@ -24,10 +30,11 @@
         <tbody>
         {%for recipe in recipe%}
         <tr>
-        <td>{{recipe.title}}</td>
+        <td class="my_recipe" onclick="location.href='/contents/{{recipe.recipe_id}}/'" style="cursor:pointer;">{{recipe.title}}</td>
         <td>{{recipe.info}}</td>
         <td><button class="btn btn-secondary rounded-pill" onclick="location.href='/edit/{{recipe.recipe_id}}/'">수정</button></td>
         <td><button class="btn btn-danger rounded-pill" onclick="location.href='/delete/{{recipe.recipe_id}}/'">삭제</button></td>
     </tr>
         {%endfor%}
         <tbody></table></body>
+        </div>
